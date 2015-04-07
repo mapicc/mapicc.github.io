@@ -1267,8 +1267,7 @@ a.article-title:hover {
 }
 .article-share-twitter,
 .article-share-facebook,
-.article-share-pinterest,
-.article-share-google {
+.article-share-pinterest {
   width: 50px;
   height: 36px;
   display: block;
@@ -1281,15 +1280,13 @@ a.article-title:hover {
 }
 .article-share-twitter:before,
 .article-share-facebook:before,
-.article-share-pinterest:before,
-.article-share-google:before {
+.article-share-pinterest:before {
   font-size: 20px;
   font-family: FontAwesome;
 }
 .article-share-twitter:hover,
 .article-share-facebook:hover,
-.article-share-pinterest:hover,
-.article-share-google:hover {
+.article-share-pinterest:hover {
   color: #fff;
 }
 .article-share-twitter:before {
@@ -1312,13 +1309,6 @@ a.article-title:hover {
 .article-share-pinterest:hover {
   background: #cb2027;
   text-shadow: 0 1px #a21a1f;
-}
-.article-share-google:before {
-  content: "\f0d5";
-}
-.article-share-google:hover {
-  background: #dd4b39;
-  text-shadow: 0 1px #be3221;
 }
 .article-gallery {
   background: #000;

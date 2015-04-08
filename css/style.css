@@ -1,9 +1,4 @@
-@font-face {
-  font-family: 'Poiret One';
-  font-style: normal;
-  font-weight: 400;
-  src: url("font/googlefonts-PoiretOne.woff") format('woff');
-}
+@import url("//fonts.googleapis.com/css?family=Lato:400,400italic");
 @font-face {
   font-family: 'FontAwesome';
   font-style: normal;
@@ -15,10 +10,10 @@
   padding: 0;
 }
 body {
-  background: #eee;
+  background: #f6f7f9;
   color: #444;
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   text-shadow: 0 0 1px transparent;
 }
 @media screen and (max-width: 1260px) {
@@ -31,66 +26,28 @@ body {
     font-size: 13px;
   }
 }
-body #experiment_wrapper {
-  display: none;
-  background: rgba(255,255,255,0.6);
-  width: 100%;
-  z-index: 9999;
-}
-@media screen and (max-width: 1260px) {
-  body #experiment_wrapper {
-    margin-left: -30px;
-    padding-right: 60px;
-  }
-}
-body #experiment_wrapper #experiment {
-  max-width: 1260px;
-  margin: 0 auto;
-  padding: 40px 0 0 0;
-}
-@media screen and (max-width: 1260px) {
-  body #experiment_wrapper #experiment {
-    padding-left: 70px;
-  }
-}
-@media screen and (max-width: 1260px) {
-  body #experiment_wrapper #slide_pager {
-    padding-left: 30px;
-  }
-}
-body #experiment_wrapper #experiment_close {
-  padding: 12px 0;
-  text-align: center;
-}
-body #experiment_wrapper #experiment_close:before {
-  font-family: FontAwesome;
-  font-size: 2em;
-  content: '\f077';
-}
-body #experiment_wrapper #experiment_close:hover {
-  color: #25a6b8;
-  cursor: pointer;
-}
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'Poiret One', simhei, cursive;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 h1 {
-  font-size: 1.8em;
+  font-size: 40px;
+  font-weight: 1000;
+  line-height: 1.1;
 }
 h2 {
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 h3 {
   font-size: 1.3em;
 }
 a {
   text-decoration: none;
-  color: #25a6b8;
+  color: #258fb8;
 }
 a:hover {
   text-decoration: underline;
@@ -136,16 +93,6 @@ a:hover {
     float: none;
   }
 }
-#main-col-page {
-  width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media screen and (max-width: 960px) {
-  #main-col-page {
-    width: 100%;
-  }
-}
 @media screen and (max-width: 1260px) {
   #wrapper {
     margin-right: 300px;
@@ -158,71 +105,60 @@ a:hover {
 }
 #header {
   text-shadow: 0 0 1px #fff;
-  text-align: center;
-  margin: 24px auto;
-}
-#header .blog-header {
-  padding: 16px;
+  margin: 50px auto;
 }
 #header a {
-  color: #333;
+  color: #999;
 }
 #header a:hover {
-  color: #25a6b8;
+  color: #258fb8;
   text-decoration: none;
 }
+#header .subtitle {
+  color: #999;
+}
 #header h1 {
+  padding: 0px 0px 0px 20px;
   font-weight: normal;
-  font-size: 4em;
+  font-size: 50px;
   line-height: 1;
 }
 #header h2 {
+  padding: 0px 0px 0px 20px;
   font-weight: normal;
-  font-size: 1.2em;
+  font-size: 20px;
   line-height: 1;
   margin-top: 10px;
 }
 #header #main-nav {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'Poiret One', simhei, cursive;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
 }
 #header #main-nav ul {
   list-style: none;
 }
 #header #main-nav ul li {
+  padding: 0px 6px 0px 0px;
+  font-size: 20px;
   float: left;
   margin-left: 30px;
-  font-size: 1.5em;
 }
-article.heart .icon:before {
-  content: '\f004';
+article {
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  background: #f6f7f9;
 }
-article.notify .icon:before {
-  content: '\f071';
+article.page {
+  padding-left: 20px;
 }
-article.configuration .icon:before {
-  content: '\f085';
+article.page .icon {
+  display: none;
 }
 article.post .icon:before {
-  content: '\f02b';
+  content: '\f016';
 }
 article.photo .icon:before {
   content: '\f030';
-}
-article.code .icon:before {
-  content: '\f040';
-}
-article.circuit .icon:before {
-  content: '\f0ad';
-}
-article.experiment .icon:before {
-  content: '\f0c3';
-}
-article.video .icon:before {
-  content: '\f03d';
 }
 article.link .icon:before {
   content: '\f0c1';
@@ -235,26 +171,13 @@ article.link .title a:after {
   vertical-align: super;
 }
 article .post-content {
-  border: 1px solid #999;
-  padding: 28px 28px 16px 77px;
+  padding: 20px 20px 15px 77px;
   margin-bottom: 50px;
   position: relative;
 }
 @media screen and (max-width: 600px) {
   article .post-content {
     padding-left: 20px;
-  }
-}
-article .post-content .imgCenter {
-  margin: 16px;
-  text-align: center;
-}
-article.page .post-content {
-  padding: 28px 56px 16px 56px;
-}
-@media screen and (max-width: 1000px) {
-  article.page .post-content {
-    padding: 28px 20px 16px 20px;
   }
 }
 article .gallery {
@@ -327,7 +250,7 @@ article header .icon {
   position: absolute;
   top: 20px;
   left: 20px;
-  color: #25a6b8;
+  color: #258fb8;
 }
 @media screen and (max-width: 600px) {
   article header .icon {
@@ -344,7 +267,7 @@ article header .icon:before {
 }
 article header time {
   color: #999;
-  font: 0.9em 'Poiret One', simhei, cursive;
+  font: 0.9em "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 5px;
   display: block;
   line-height: 1;
@@ -356,11 +279,11 @@ article header .title a {
   color: #444;
 }
 article header .title a:hover {
-  color: #25a6b8;
+  color: #258fb8;
   text-decoration: none;
 }
 article .entry {
-  text-align: justify;
+  text-align: left;
   line-height: 1.6;
 }
 article .entry p,
@@ -377,42 +300,13 @@ article .entry h6,
 article .entry .video-container {
   margin-top: 15px;
 }
-article .entry >table {
-  font-size: 0.9em;
-  margin: 24px auto;
-  width: 100%;
-  border: 1px solid #999;
-  border-left: 0;
-  border-spacing: 0;
-}
-article .entry >table th {
-  padding: 4px 12px;
-  border-left: 1px solid #999;
-  border-top: 0;
-}
-article .entry >table td {
-  padding: 4px 12px;
-  border-left: 1px solid #999;
-  border-top: 1px solid #999;
-  word-break: break-all;
-}
 article .entry blockquote {
-  background: #eee;
-  border: 1px solid #999;
-  padding: 0 24px 15px;
-  font-size: 0.9em;
-}
-article .entry blockquote footer {
-  border-top: none;
-  font-size: 0.8em;
-  line-height: 1;
-  margin: 20px 0 0;
-  padding-top: 0;
-}
-article .entry blockquote footer cite:before {
-  content: '—';
-  color: #ccc;
-  padding: 0 0.5em;
+  border-left: 5px solid #c7c7c7;
+  font-style: normal;
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  padding: 1px 0px 10px 20px;
+  text-align: left;
 }
 article .entry code,
 article .entry pre {
@@ -424,24 +318,26 @@ article .entry code {
   padding: 0 5px;
   margin: 0 2px;
   font-size: 0.9em;
-  border: 1px solid #999;
+  border: 1px solid #ddd;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-article .entry >pre {
-  overflow: auto;
-}
 article .entry pre {
   background: #eee;
-  border: 1px solid #999;
+  border: 1px solid #ddd;
   margin-top: 15px;
+  overflow: auto;
   padding: 7px 15px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
 }
 article .entry pre code {
   background: none;
   padding: 0;
   margin: 0;
   border: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 article .entry ul,
 article .entry ol,
@@ -462,7 +358,7 @@ article .entry dl dl {
 article .entry h1,
 article .entry h2 {
   font-weight: normal;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   margin-top: 20px;
 }
@@ -526,7 +422,7 @@ article .entry .pullquote {
 article footer {
   margin-top: 15px;
   padding-top: 10px;
-  border-top: 1px solid #999;
+  border-top: 1px solid #ddd;
   color: #999;
   font-size: 0.9em;
   line-height: 16px;
@@ -537,20 +433,16 @@ article footer a {
   color: #999;
 }
 article footer a:hover {
-  color: #25a6b8;
+  color: #258fb8;
   text-decoration: none;
 }
-article footer a:before,
-article footer a:after {
-  font: 1.3em FontAwesome;
-  padding: 24px;
+article footer a:before {
+  font: 1.1em FontAwesome;
+  padding-right: 10px;
   vertical-align: middle;
 }
 article footer a.more-link:before {
-  content: '\f078';
-}
-article footer a.more-link:after {
-  content: '\f078';
+  content: '\f054';
 }
 article footer a.comment-link:before {
   content: '\f075';
@@ -571,9 +463,6 @@ article footer .categories:before {
   top: 2px;
   left: 1px;
 }
-article footer .tags {
-  text-align: left;
-}
 article footer .tags:before {
   content: '\f02b';
   top: 3px;
@@ -586,8 +475,8 @@ article footer .addthis iframe {
   margin-top: 0;
 }
 #comment {
-  border: 1px solid #999;
-  padding: 20px;
+  padding: 20px 20px 20px 75px;
+  background: #f1f1f1;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   margin-bottom: 50px;
@@ -599,14 +488,14 @@ article footer .addthis iframe {
 #pagination a {
   display: block;
   padding: 5px 10px;
-  border: 1px solid #999;
+  background: #ddd;
   color: #999;
-  font-family: 'Poiret One', simhei, cursive;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
 #pagination a:hover {
-  background: #25a6b8;
+  background: #258fb8;
   color: #fff;
   text-decoration: none;
   text-shadow: none;
@@ -625,6 +514,7 @@ article footer .addthis iframe {
   color: #999;
   font-weight: normal;
   margin-bottom: 30px;
+  text-shadow: 0 0 1px #fff;
 }
 .archive-title:before {
   font-family: FontAwesome;
@@ -638,6 +528,9 @@ article footer .addthis iframe {
   content: '\f07b';
 }
 .archive {
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 50px;
 }
 .archive article {
@@ -645,13 +538,7 @@ article footer .addthis iframe {
   box-shadow: none;
 }
 .archive article .post-content {
-  padding: 10px 12px 10px 77px;
-  margin-bottom: 4px;
-}
-@media screen and (max-width: 600px) {
-  .archive article .post-content {
-    padding-left: 20px;
-  }
+  margin-bottom: 0;
 }
 #sidebar {
   width: 270px;
@@ -664,14 +551,16 @@ article footer .addthis iframe {
   }
 }
 #sidebar .widget {
-  border: 1px solid #999;
+  background: #f6f7f9;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
   margin-bottom: 30px;
   word-wrap: break-word;
 }
 #sidebar .widget .title {
   padding: 15px 20px;
   font-size: 1em;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #ddd;
   font-weight: normal;
 }
 #sidebar .widget .entry {
@@ -699,12 +588,13 @@ article footer .addthis iframe {
   margin-bottom: 30px;
 }
 #sidebar .search input {
-  background: rgba(255,255,255,0);
-  font-family: 'Poiret One', simhei, cursive;
-  font-style: italic;
+  background: #f6f7f9;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-style: normal;
   font-size: 1em;
+  font-weight: bold;
   padding: 10px 15px;
-  border: 1px solid #999;
+  border: 1px solid #ddd;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -725,7 +615,7 @@ article footer .addthis iframe {
   content: ')';
 }
 #sidebar .twitter li {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #ddd;
   padding: 15px 20px;
   font-size: 0.9em;
 }
@@ -746,17 +636,19 @@ article footer .addthis iframe {
   display: inline-block;
 }
 #footer {
-  text-align: center;
   color: #999;
   margin-bottom: 50px;
-  font: 1.2em/1.6 'Poiret One', simhei, cursive;
+  font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
   background: #eee;
-  border: 1px solid #999;
+  border: 1px solid #ddd;
   margin-top: 15px;
   padding: 7px 15px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  text-shadow: 0 0 1px #fff;
   line-height: 1.6;
   overflow: auto;
   color: #666;
@@ -784,16 +676,19 @@ article footer .addthis iframe {
   font-size: 100%;
 }
 .entry .gist .gist-file .gist-meta a {
-  color: #25a6b8;
+  color: #258fb8;
 }
 .entry .gist .gist-file .gist-meta a:visited {
-  color: #25a6b8;
+  color: #258fb8;
 }
 figure.highlight {
   background: #eee;
-  border: 1px solid #999;
+  border: 1px solid #ddd;
   margin-top: 15px;
   padding: 7px 15px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  text-shadow: 0 0 1px #fff;
   line-height: 1.6;
   overflow: auto;
   position: relative;
@@ -820,11 +715,12 @@ figure.highlight table {
 figure.highlight .gutter {
   color: #999;
   padding-right: 15px;
-  border-right: 1px solid #999;
+  border-right: 1px solid #ddd;
   text-align: right;
 }
 figure.highlight .code {
   padding-left: 15px;
+  border-left: 1px solid #fff;
   color: #666;
 }
 pre .comment,
@@ -894,30 +790,4 @@ pre .clojure .title {
 }
 pre .deletion {
   color: #dc322f;
-}
-#winterland {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-}
-#winterland canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-body #bdshare {
-  position: absolute !important;
-}
-body #bdshare_pop {
-  position: absolute !important;
-}
-#scroll2top {
-  position: fixed;
-  right: 36px;
-  bottom: 36px;
 }

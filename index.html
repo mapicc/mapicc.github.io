@@ -67,42 +67,32 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-04-09T06:40:25.946Z"><a href="/2015/04/09/hadoop运行与wordcount程序测试/">2015-04-09</a></time>
+        <time datetime="2015-04-09T07:05:47.182Z"><a href="/2015/04/09/Ubuntu14.10下配置java环境变量/">2015-04-09</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/04/09/hadoop运行与wordcount程序测试/">Hadoop安装与WordCount程序测试</a></h1>
+    <h1 class="title"><a href="/2015/04/09/Ubuntu14.10下配置java环境变量/">Ubuntu14.10配置java环境变量</a></h1>
   
 
     </header>
     <div class="entry">
       
         <ol>
-<li>首次运行hadoop前需格式化HDFS文件系统，命令如下：<br><img src="http://i.imgur.com/xoFiLlo.png" alt=""><br>格式化成功将会显示如下提示：<br><img src="http://i.imgur.com/V6FSfg9.png" alt=""></li>
-<li><p>运行hadoop，命令及运行情况如下：<br><img src="http://i.imgur.com/mPu4JD4.png" alt=""></p>
+<li><p>下载最新的<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">jdk8安装</a></p>
 </li>
-<li><p>测试数据说明<br>测试数据来自hadoop官网的6个网页文件（html），每一个网页文件都具有大量的英文单词。文件如下：<br><img src="http://i.imgur.com/91fKDlS.png" alt=""></p>
+<li><p>解压jdk-8u40-linux-x64.gz(64位版本，相信32位的现在已经很少了吧)，解压后放置在/opt下</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> tar -zxvf jdk-<span class="number">8</span>u40-linux-x64<span class="class">.gz</span> -C /opt</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
-<li><p>运行WordCount程序</p>
-<blockquote>
-<p>将本地的6个html文件拷贝进HDFS文件系统，命令如下：<br><img src="http://i.imgur.com/F5mTMu0.png" alt=""></p>
-<p>运行hadoop自带的wordcount程序，命令如下：<br><img src="http://i.imgur.com/OGBTHfP.png" alt=""></p>
-<p>运行过程如下：<br><img src="http://i.imgur.com/W8g2svF.png" alt=""></p>
-</blockquote>
-</li>
-<li><p>查看HDFS中的结果<br><img src="http://i.imgur.com/C79gW5H.png" alt=""></p>
-</li>
-<li>将结果从HDFS拷贝到本地磁盘<br><img src="http://i.imgur.com/W2YYTzD.png" alt=""></li>
-<li>查看结果，test-out会产生3个文件或者文件夹，如下:<br><img src="http://i.imgur.com/eGOJ6ci.png" alt=""><br>中间一个part-r-00000的文件是我们需要的结果，它是以词与词频的形式为我们呈现的，如下所示（截取部分）：</li>
-<li>注意事项<br>在启动hadoop之后偶尔发现在HDFS中不能删除文件，提示namenode safe mode，这时候需要hadoop dfsadmin –safemode leave取消safe mode。</li>
-</ol>
-
+<li><p>配置环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> gedit ~/.bashrc</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2015/04/09/Ubuntu14.10下配置java环境变量/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -132,7 +122,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-04-09T05:30:52.312Z"><a href="/2015/04/09/Ubuntu14.10安装hadoop/">2015-04-09</a></time>
+        <time datetime="2015-04-09T07:05:21.014Z"><a href="/2015/04/09/Ubuntu14.10安装hadoop/">2015-04-09</a></time>
       
       
   
@@ -147,62 +137,14 @@
 <li><p>创建hadoop组和hadoop用户,并将hadoop用户加入hadoop组</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> addgroup hadoop</span><br><span class="line"><span class="variable">$sudo</span> adduser -ingroup hadoop hadoop</span><br></pre></td></tr></table></figure>
 <p>回车后会提示输入新的UNIX密码，这是新建用户hadoop的密码。密码不回显，输入之后会要求确认一次。切记这一步不能回车跳过，否则无法登陆创建的用户。密码确认之后还要输入其他一些个人信息，这里可以一直回车跳过，最后确认所有信息正误，输入Y之后回车。</p>
-</li>
-<li><p>为hadoop用户添加权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> gedit /etc/sudoers</span><br></pre></td></tr></table></figure>
-<p>在打开的sudoers文件中，给hadoop用户赋予和root用户同样的权限。在root ALL=(ALL:ALL) ALL这一行下面添加hadoop ALL=(ALL:ALL) ALL</p>
-</li>
-<li>使用hadoop用户身份登陆Ubuntu系统</li>
-<li><p>安装ssh</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo apt-get <span class="operator"><span class="keyword">install</span> openssh-<span class="keyword">server</span></span></span><br></pre></td></tr></table></figure>
-<p>安装完成后，启动服务：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">$sudo</span> /etc/init.<span class="keyword">d</span>/ssh start</span><br></pre></td></tr></table></figure>
-<p>查看服务是否正确启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ps</span> -<span class="keyword">e</span> | <span class="keyword">grep</span> ssh</span><br></pre></td></tr></table></figure>
-<p>我们将会看到终端打印出sshd的进程</p>
-</li>
-<li>设置免密码登录，生成私钥和公钥<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ssh</span>-keygen -t rsa -P <span class="string">""</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="安装hadoop1-2-1">安装hadoop1.2.1</h2><ol>
-<li>官网下载<a href="http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-1.2.1" target="_blank" rel="external">hadoop1.2.1</a></li>
-<li><p>安装hadoop<br>解压hadoop至/usr/local目录下：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> tar zxvf hadoop-<span class="number">1.2</span>.<span class="number">1</span><span class="class">.tar</span><span class="class">.gz</span> -C /usr/local/</span><br></pre></td></tr></table></figure>
-<p>赋予用户对该文件夹足够的权限：</p>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> <span class="keyword">chmod</span> <span class="number">777</span> /usr/<span class="keyword">local</span>/hadoop-<span class="number">1.2</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>配置环境变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> gedit ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>在文件的末尾添加环境变量：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#HADOOP VARIABLES START</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk1.<span class="number">8.0</span>_40/</span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop-<span class="number">1.2</span>.<span class="number">1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/bin:<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib:.</span><br><span class="line"><span class="comment">#HADOOP VARIABLES END</span></span><br></pre></td></tr></table></figure>
-<p>执行下面的命令使添加的环境变量生效：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置hadoop-env.sh文件<br>执行下面的命令：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">$sudo</span> gedit /usr/<span class="keyword">local</span>/hadoop-1.2.1/<span class="keyword">conf</span>/hadoop-env.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-<p>找到JAVA_HOME变量，修改此变量如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> JAVA_HOME=<span class="regexp">/opt/</span>jdk1.8.0_40</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置core-site.xml文件<br>填写以下内容：</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">&lt;configuration&gt;</span></span><br><span class="line">    <span class="variable">&lt;property&gt;</span></span><br><span class="line">        <span class="variable">&lt;name&gt;</span>hadoop.tmp.dir<span class="variable">&lt;/name&gt;</span></span><br><span class="line">        <span class="variable">&lt;value&gt;</span>/home/hadoop/hadoop-<span class="number">1.2</span>.<span class="number">1</span>/tmp<span class="variable">&lt;/value&gt;</span></span><br><span class="line">        <span class="variable">&lt;description&gt;</span>Abase <span class="keyword">for</span> other temporary directories.</span><br><span class="line">	<span class="variable">&lt;/description&gt;</span></span><br><span class="line">    <span class="variable">&lt;/property&gt;</span></span><br><span class="line">    <span class="variable">&lt;property&gt;</span></span><br><span class="line">        <span class="variable">&lt;name&gt;</span>fs.<span class="keyword">default</span>.name<span class="variable">&lt;/name&gt;</span></span><br><span class="line">        <span class="variable">&lt;value&gt;</span>hdfs://localhost:<span class="number">9000</span><span class="variable">&lt;/value&gt;</span></span><br><span class="line">    <span class="variable">&lt;/property&gt;</span></span><br><span class="line"><span class="variable">&lt;/configuration&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置hdfs-site.xml文件</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;<span class="keyword">property</span>&gt;</span><br><span class="line">    &lt;<span class="property">name</span>&gt;dfs.<span class="property">name</span>.dir&lt;/<span class="property">name</span>&gt;</span><br><span class="line">    &lt;value&gt;/home/hadoop/hadoop-<span class="number">1.2</span>.1/dfs/<span class="property">name</span>&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;Path <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> <span class="keyword">local</span> filesystem <span class="keyword">where</span> <span class="keyword">the</span> NameNode stores <span class="keyword">the</span> namespace <span class="keyword">and</span> transactions logs persistently.&lt;/description&gt;</span><br><span class="line">&lt;/<span class="keyword">property</span>&gt;</span><br><span class="line"> </span><br><span class="line">&lt;<span class="keyword">property</span>&gt;</span><br><span class="line">    &lt;<span class="property">name</span>&gt;dfs.data.dir&lt;/<span class="property">name</span>&gt;</span><br><span class="line">    &lt;value&gt;/home/hadoop/hadoop-<span class="number">1.2</span>.1/dfs/data&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;Comma separated <span class="type">list</span> <span class="keyword">of</span> paths <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> <span class="keyword">local</span> filesystem <span class="keyword">of</span> a DataNode <span class="keyword">where</span> <span class="keyword">it</span> should store <span class="keyword">its</span> blocks.&lt;/description&gt;</span><br><span class="line">&lt;/<span class="keyword">property</span>&gt;</span><br><span class="line">&lt;<span class="keyword">property</span>&gt;</span><br><span class="line">    &lt;<span class="property">name</span>&gt;dfs.replication&lt;/<span class="property">name</span>&gt;</span><br><span class="line">    &lt;value&gt;<span class="number">1</span>&lt;/value&gt;</span><br><span class="line">&lt;/<span class="keyword">property</span>&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置mapred-site.xml文件</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">&lt;configuration&gt;</span></span><br><span class="line"><span class="variable">&lt;property&gt;</span></span><br><span class="line">    <span class="variable">&lt;name&gt;</span>mapred.job.tracker<span class="variable">&lt;/name&gt;</span></span><br><span class="line">    <span class="variable">&lt;value&gt;</span>localhost:<span class="number">9001</span><span class="variable">&lt;/value&gt;</span></span><br><span class="line">    <span class="variable">&lt;description&gt;</span>Host or IP and <span class="keyword">port</span> of JobTracker.<span class="variable">&lt;/description&gt;</span></span><br><span class="line"><span class="variable">&lt;/property&gt;</span></span><br><span class="line"><span class="variable">&lt;/configuration&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置masters文件<br>填写：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置slaves文件<br>填写：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2015/04/09/Ubuntu14.10安装hadoop/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -232,41 +174,26 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-04-08T11:28:39.631Z"><a href="/2015/04/08/Ubuntu14.10下配置java环境变量/">2015-04-08</a></time>
+        <time datetime="2015-04-09T07:03:41.551Z"><a href="/2015/04/09/hadoop运行与wordcount程序测试/">2015-04-09</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/04/08/Ubuntu14.10下配置java环境变量/">Ubuntu14.10配置java环境变量</a></h1>
+    <h1 class="title"><a href="/2015/04/09/hadoop运行与wordcount程序测试/">Hadoop安装与WordCount程序测试</a></h1>
   
 
     </header>
     <div class="entry">
       
         <ol>
-<li><p>下载最新的<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">jdk8安装</a></p>
-</li>
-<li><p>解压jdk-8u40-linux-x64.gz(64位版本，相信32位的现在已经很少了吧)，解压后放置在/opt下</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> tar -zxvf jdk-<span class="number">8</span>u40-linux-x64<span class="class">.gz</span> -C /opt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置环境变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> gedit ~/.bashrc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在末尾处加入一下内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk1.<span class="number">8.0</span>_40</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置默认JDK<br>由于部分linux已经自带了JDK，所以我们需要设置刚刚安装好的JDK来作为默认JDK，可以进行下面的配置</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$sudo update-alternatives --install <span class="regexp">/usr/</span>bin<span class="regexp">/java java /</span>opt<span class="regexp">/jdk1.8.0_40/</span>bin/java <span class="number">300</span></span><br><span class="line">$sudo update-alternatives --install <span class="regexp">/usr/</span>bin<span class="regexp">/javac javac /</span>opt<span class="regexp">/jdk1.8.0_40/</span>bin/javac <span class="number">300</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试<br>启动终端，输入以下命令</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">$java</span> -<span class="keyword">version</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>如果显示java的版本号1.8.0则环境变量配置成功</p>
-
+<li>首次运行hadoop前需格式化HDFS文件系统，命令如下：<br><img src="http://i.imgur.com/xoFiLlo.png" alt=""><br>格式化成功将会显示如下提示：<br><img src="http://i.imgur.com/V6FSfg9.png" alt="">
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2015/04/09/hadoop运行与wordcount程序测试/#more" class="more-link">阅读全文</a>
+          </div>
         
         
       
@@ -347,7 +274,7 @@
   <ul class="entry">
     
       <li>
-        <a href="/2015/04/09/hadoop运行与wordcount程序测试/">Hadoop安装与WordCount程序测试</a>
+        <a href="/2015/04/09/Ubuntu14.10下配置java环境变量/">Ubuntu14.10配置java环境变量</a>
       </li>
     
       <li>
@@ -355,7 +282,7 @@
       </li>
     
       <li>
-        <a href="/2015/04/08/Ubuntu14.10下配置java环境变量/">Ubuntu14.10配置java环境变量</a>
+        <a href="/2015/04/09/hadoop运行与wordcount程序测试/">Hadoop安装与WordCount程序测试</a>
       </li>
     
       <li>

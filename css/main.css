@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #98ff4d;
+  background: #12e706;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2666,4 +2666,12 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+}
+@font-face {
+  font-family: Zitiming;
+  src: url("/fonts/Zitiming.ttf");
+}
+.site-title {
+  font-size: 40px !important;
+  font-family: 'Zitiming' !important;
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>hello world</title>
+    <url>/uncategorized/hello-world/</url>
+    <content><![CDATA[<p>Hello World!</p>]]></content>
+      <tags>
+        <tag>uncategories</tag>
+      </tags>
+  </entry>
+</search>

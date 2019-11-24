@@ -38,8 +38,8 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
@@ -52,12 +52,12 @@
 
   <meta name="description" content="男人有实力，才有魅力">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
+<meta property="og:title" content="标签">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;index.html">
 <meta property="og:site_name" content="mapicccy">
 <meta property="og:description" content="男人有实力，才有魅力">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-24T01:55:09.236Z">
+<meta property="og:updated_time" content="2019-11-24T05:38:54.271Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/tags/">
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title>tags | mapicccy
+  <title>标签 | mapicccy
   </title>
   
 
@@ -160,9 +160,34 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -190,7 +215,7 @@
     <div class="post-block" lang="en">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">tags
+<h1 class="post-title" itemprop="name headline">标签
 </h1>
 
 <div class="post-meta">
@@ -204,7 +229,15 @@
       
       
       <div class="post-body">
-          
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+              1 tag in total
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/uncategories/" style="font-size: 12px; color: #ccc">uncategories</a>
+            </div>
+          </div>
+        
       </div>
       
       
@@ -269,8 +302,10 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -402,6 +437,8 @@
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 

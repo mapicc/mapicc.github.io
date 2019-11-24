@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>mapicccy</title>
+  
+  <subtitle>记录、分享</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-11-24T01:13:55.381Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>mapicccy</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hello world</title>
+    <link href="http://yoursite.com/uncategorized/hello-world/"/>
+    <id>http://yoursite.com/uncategorized/hello-world/</id>
+    <published>2019-11-24T01:11:31.000Z</published>
+    <updated>2019-11-24T01:13:55.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hello World!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Hello World!&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="uncategories" scheme="http://yoursite.com/tags/uncategories/"/>
+    
+  </entry>
+  
+</feed>

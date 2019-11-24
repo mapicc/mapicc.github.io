@@ -2,23 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2019-11-24T05:56:56.318Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/categories/index.html</loc>
     
-    <lastmod>2019-11-24T05:47:19.274Z</lastmod>
+    <lastmod>2019-11-24T05:56:35.025Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/about/index.html</loc>
     
-    <lastmod>2019-11-24T05:47:05.884Z</lastmod>
+    <lastmod>2019-11-24T05:56:17.589Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://yoursite.com/lib/bookmark/README.html</loc>
     
-    <lastmod>2019-11-24T05:38:54.271Z</lastmod>
+    <lastmod>2019-11-24T05:49:26.143Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/lib/bookmark/package.json</loc>
+    
+    <lastmod>2019-11-24T05:49:26.143Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/lib/bookmark/renovate.json</loc>
+    
+    <lastmod>2019-11-24T05:49:26.143Z</lastmod>
     
   </url>
   

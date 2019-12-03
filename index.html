@@ -190,6 +190,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="mapicccy">
+      <meta itemprop="description" content="男人有实力，才有魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mapicccy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/uncategorized/vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">vim实用配置文件</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-03 06:47:39 / Modified: 06:50:35" itemprop="dateCreated datePublished" datetime="2019-12-03T06:47:39+00:00">2019-12-03</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="辛苦整理，转载请注明原文地址"><a href="#辛苦整理，转载请注明原文地址" class="headerlink" title="辛苦整理，转载请注明原文地址"></a>辛苦整理，转载请注明原文地址</h2><p>set nocompatible<br>filetype on</p><p>hi Normal ctermfg=252 ctermbg=none</p><p>set rtp+=~/.vim/bundle/Vundle.vim<br>call vundle#begin()</p><p>“ 这里根据自己需要的插件来设置，以下是我的配置 “<br>“<br>“ YouCompleteMe:语句补全插件<br>set runtimepath+=<del>/.vim/bundle/YouCompleteMe<br>autocmd InsertLeave * if pumvisible() == 0|pclose|endif “离开插入模式后自动关闭预览窗口”<br>let g:ycm_collect_identifiers_from_tags_files = 1           “ 开启 YCM基于标签引擎<br>let g:ycm_collect_identifiers_from_comments_and_strings = 1 “ 注释与字符串中的内容也用于补全<br>let g:syntastic_ignore_files=[“.*.py$”]<br>let g:ycm_seed_identifiers_with_syntax = 1                  “ 语法关键字补全<br>let g:ycm_complete_in_comments = 1<br>let g:ycm_confirm_extra_conf = 0                            “ 关闭加载.ycm_extra_conf.py提示<br>let g:ycm_key_list_select_completion = [‘<c-n>‘, ‘<down>‘]  “ 映射按键,没有这个会拦截掉tab, 导致其他插件的tab不能用.<br>let g:ycm_key_list_previous_completion = [‘<c-p>‘, ‘<up>‘]<br>let g:ycm_complete_in_comments = 1                          “ 在注释输入中也能补全<br>let g:ycm_complete_in_strings = 1                           “ 在字符串输入中也能补全<br>let g:ycm_collect_identifiers_from_comments_and_strings = 1 “ 注释和字符串中的文字也会被收入补全<br>let g:ycm_global_ycm_extra_conf=’</up></c-p></down></c-n></del>/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py’<br>let g:ycm_show_diagnostics_ui = 0                           “ 禁用语法检查<br>inoremap <expr> <cr> pumvisible() ? “&lt;C-y&gt;” : “&lt;CR&gt;”             “ 回车即选中当前项<br>nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<cr>     “ 跳转到定义处<br>let g:ycm_min_num_of_chars_for_completion=2                 “ 从第2个键入字符就开始罗列匹配项<br>“</cr></c-j></cr></expr></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/uncategorized/vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/ssd%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -484,7 +565,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -534,13 +615,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">2k</span>
+    <span title="Symbols count total">9k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2 mins.</span>
+    <span title="Reading time total">8 mins.</span>
 </div>
 
 <div class="running-time">

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"manual"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="辛苦整理，转载请注明原文地址set nocompatiblefiletype onhi Normal ctermfg=252 ctermbg=noneset rtp+=~&#x2F;.vim&#x2F;bundle&#x2F;Vundle.vimcall vundle#begin()“ 这里根据自己需要的插件来设置，以下是我的配置 “““ YouCompleteMe:语句补全插件set runtimepath+=&#x2F;.vim&#x2F;b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim实用配置文件">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;uncategorized&#x2F;vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6&#x2F;index.html">
+<meta property="og:site_name" content="mapicccy">
+<meta property="og:description" content="辛苦整理，转载请注明原文地址set nocompatiblefiletype onhi Normal ctermfg=252 ctermbg=noneset rtp+=~&#x2F;.vim&#x2F;bundle&#x2F;Vundle.vimcall vundle#begin()“ 这里根据自己需要的插件来设置，以下是我的配置 “““ YouCompleteMe:语句补全插件set runtimepath+=&#x2F;.vim&#x2F;b">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-03T06:50:35.393Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/uncategorized/vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>vim实用配置文件 | mapicccy</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="mapicccy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mapicccy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">记录、分享</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="mapicccy">
+      <meta itemprop="description" content="男人有实力，才有魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mapicccy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim实用配置文件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-03 06:47:39 / Modified: 06:50:35" itemprop="dateCreated datePublished" datetime="2019-12-03T06:47:39+00:00">2019-12-03</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="辛苦整理，转载请注明原文地址"><a href="#辛苦整理，转载请注明原文地址" class="headerlink" title="辛苦整理，转载请注明原文地址"></a>辛苦整理，转载请注明原文地址</h2><p>set nocompatible<br>filetype on</p><p>hi Normal ctermfg=252 ctermbg=none</p><p>set rtp+=~/.vim/bundle/Vundle.vim<br>call vundle#begin()</p><p>“ 这里根据自己需要的插件来设置，以下是我的配置 “<br>“<br>“ YouCompleteMe:语句补全插件<br>set runtimepath+=<del>/.vim/bundle/YouCompleteMe<br>autocmd InsertLeave * if pumvisible() == 0|pclose|endif “离开插入模式后自动关闭预览窗口”<br>let g:ycm_collect_identifiers_from_tags_files = 1           “ 开启 YCM基于标签引擎<br>let g:ycm_collect_identifiers_from_comments_and_strings = 1 “ 注释与字符串中的内容也用于补全<br>let g:syntastic_ignore_files=[“.*.py$”]<br>let g:ycm_seed_identifiers_with_syntax = 1                  “ 语法关键字补全<br>let g:ycm_complete_in_comments = 1<br>let g:ycm_confirm_extra_conf = 0                            “ 关闭加载.ycm_extra_conf.py提示<br>let g:ycm_key_list_select_completion = [‘<c-n>‘, ‘<down>‘]  “ 映射按键,没有这个会拦截掉tab, 导致其他插件的tab不能用.<br>let g:ycm_key_list_previous_completion = [‘<c-p>‘, ‘<up>‘]<br>let g:ycm_complete_in_comments = 1                          “ 在注释输入中也能补全<br>let g:ycm_complete_in_strings = 1                           “ 在字符串输入中也能补全<br>let g:ycm_collect_identifiers_from_comments_and_strings = 1 “ 注释和字符串中的文字也会被收入补全<br>let g:ycm_global_ycm_extra_conf=’</up></c-p></down></c-n></del>/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py’<br>let g:ycm_show_diagnostics_ui = 0                           “ 禁用语法检查<br>inoremap <expr> <cr> pumvisible() ? “&lt;C-y&gt;” : “&lt;CR&gt;”             “ 回车即选中当前项<br>nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<cr>     “ 跳转到定义处<br>let g:ycm_min_num_of_chars_for_completion=2                 “ 从第2个键入字符就开始罗列匹配项<br>“</cr></c-j></cr></expr></p><a id="more"></a>
+
+
+
+<p>“ github 仓库中的插件 “<br>Plugin ‘VundleVim/Vundle.vim’</p>
+<p>Plugin ‘vim-airline/vim-airline’<br>“vim-airline配置:优化vim界面”<br>“let g:airline#extensions#tabline#enabled = 1<br>“ airline设置<br>“ 显示颜色<br>set t_Co=256<br>set laststatus=2<br>“ 使用powerline打过补丁的字体<br>let g:airline_powerline_fonts = 1<br>“ 开启tabline<br>let g:airline#extensions#tabline#enabled = 1<br>“ tabline中当前buffer两端的分隔字符<br>let g:airline#extensions#tabline#left_sep = ‘ ‘<br>“ tabline中未激活buffer两端的分隔字符<br>let g:airline#extensions#tabline#left_alt_sep = ‘ ‘<br>“ tabline中buffer显示编号<br>let g:airline#extensions#tabline#buffer_nr_show = 1<br>“ 映射切换buffer的键位<br>nnoremap [b :bp<cr><br>nnoremap ]b :bn<cr><br>“ 映射<leader>num到num buffer<br>map <leader>1 :b 1<cr><br>map <leader>2 :b 2<cr><br>map <leader>3 :b 3<cr><br>map <leader>4 :b 4<cr><br>map <leader>5 :b 5<cr><br>map <leader>6 :b 6<cr><br>map <leader>7 :b 7<cr><br>map <leader>8 :b 8<cr><br>map <leader>9 :b 9<cr></cr></leader></cr></leader></cr></leader></cr></leader></cr></leader></cr></leader></cr></leader></cr></leader></cr></leader></leader></cr></cr></p>
+<p>“ vim-scripts 中的插件 “<br>Plugin ‘taglist.vim’<br>“ctags 配置:F3快捷键显示程序中的各种tags，包括变量和函数等。<br>map <f3> :TlistToggle<cr><br>let Tlist_Use_Right_Window=1<br>let Tlist_Show_One_File=1<br>let Tlist_Exit_OnlyWindow=1<br>let Tlist_WinWidt=25</cr></f3></p>
+<p>Plugin ‘The-NERD-tree’<br>“NERDTree 配置:F2快捷键显示当前目录树<br>map <f2> :NERDTreeToggle<cr><br>let NERDTreeWinSize=25 </cr></f2></p>
+<p>Plugin ‘indentLine.vim’<br>Plugin ‘delimitMate.vim’</p>
+<p>“ 非 github 仓库的插件”<br>“ Plugin ‘git://git.wincent.com/command-t.git’<br>“ 本地仓库的插件 “</p>
+<p>call vundle#end()</p>
+<p>“””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””<br>“””””新文件标题<br>“”””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””<br>“新建.c,.h,.sh,.java文件，自动插入文件头<br>autocmd BufNewFile <em>.cpp,</em>.[ch],<em>.sh,</em>.java exec “:call SetTitle()”<br>“”定义函数SetTitle，自动插入文件头<br>func SetTitle()<br>    “如果文件类型为.sh文件<br>    if &amp;filetype == ‘sh’<br>        call setline(1, “##########################################################################”)<br>        call append(line(“.”), “# File Name: “.expand(“%”))<br>        call append(line(“.”)+1, “# Author: amoscykl”)<br>        call append(line(“.”)+2, “# mail: <a href="mailto:amoscykl980629@163.com" target="_blank" rel="noopener">amoscykl980629@163.com</a>“)<br>        call append(line(“.”)+3, “# Created Time: “.strftime(“%c”))<br>        call append(line(“.”)+4, “#########################################################################”)<br>        call append(line(“.”)+5, “#!/bin/zsh”)<br>        call append(line(“.”)+6, “PATH=/home/edison/bin:/home/edison/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/work/tools/gcc-3.4.5-glibc-2.3.6/bin”)<br>        call append(line(“.”)+7, “export PATH”)<br>        call append(line(“.”)+8, “”)<br>    else<br>        call setline(1, “/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>“)<br>        call append(line(“.”), “    &gt; File Name: “.expand(“%”))<br>        call append(line(“.”)+1, “    &gt; Author: amoscykl”)<br>        call append(line(“.”)+2, “    &gt; Mail: <a href="mailto:amoscykl@163.com" target="_blank" rel="noopener">amoscykl@163.com</a> “)<br>        call append(line(“.”)+3, “    &gt; Created Time: “.strftime(“%c”))<br>        call append(line(“.”)+4, “ <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/“)<br>        call append(line(“.”)+5, “”)<br>    endif<br>    if &amp;filetype == ‘cpp’<br>        call append(line(“.”)+6, “#include<iostream>“)<br>        call append(line(“.”)+7, “using namespace std;”)<br>        call append(line(“.”)+8, “”)<br>    endif<br>    if &amp;filetype == ‘c’<br>        call append(line(“.”)+6, “#include&lt;stdio.h&gt;”)<br>        call append(line(“.”)+7, “”)<br>    endif<br>    “    if &amp;filetype == ‘java’<br>    “        call append(line(“.”)+6,”public class “.expand(“%”))<br>    “        call append(line(“.”)+7,””)<br>    “    endif<br>    “新建文件后，自动定位到文件末尾<br>    autocmd BufNewFile * normal G<br>endfunc<br>“”””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””<br>“键盘命令<br>“”””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””</iostream></p>
+<p>nmap <leader>w :w!<cr><br>nmap <leader>f :find<cr></cr></leader></cr></leader></p>
+<p>“ 映射全选+复制 ctrl+a<br>map <c-a> ggVGY<br>map! <c-a> <esc>ggVGY<br>map <f12> gg=G<br>“ 选中状态下 Ctrl+c 复制<br>vmap <c-c> “+y</c-c></f12></esc></c-a></c-a></p>
+<p>“”””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””<br>“”实用设置<br>“””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””””<br>“ 设置当文件被改动时自动载入<br>set autoread<br>“ quickfix模式<br>autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr><br>“代码补全<br>set completeopt=preview,menu<br>“允许插件<br>filetype plugin on<br>“共享剪贴板<br>set clipboard=unnamed<br>“从不备份<br>set nobackup<br>“make 运行<br>:set makeprg=g++\ -Wall\ \ %<br>“自动保存<br>set autowrite<br>set ruler                   “ 打开状态栏标尺<br>set cursorline              “ 突出显示当前行<br>set magic                   “ 设置魔术<br>set guioptions-=T           “ 隐藏工具栏<br>set guioptions-=m           “ 隐藏菜单栏<br>“set statusline=\ %&lt;%F[%1<em>%M%</em>%n%R%H]%=\ %y\ %0(%{&amp;fileformat}\ %{&amp;encoding}\ %c:%l/%L%)<br>“ 设置在状态行显示的信息<br>“ set foldcolumn=0<br>“ set foldmethod=indent<br>“ set foldlevel=3<br>“ set foldenable              “ 开始折叠<br>“ 不要使用vi的键盘模式，而是vim自己的<br>set nocompatible<br>“ 语法高亮<br>set syntax=on<br>“ 去掉输入错误的提示声音<br>set noeb<br>“ 在处理未保存或只读文件的时候，弹出确认<br>set confirm<br>“ 自动缩进<br>set autoindent<br>set cindent<br>“ Tab键的宽度<br>set tabstop=4<br>“ 统一缩进为4<br>set softtabstop=4<br>set shiftwidth=4<br>“ 不要用空格代替制表符<br>set noexpandtab<br>“ 在行和段开始处使用制表符<br>set smarttab<br>“ 显示行号<br>set number<br>“ 历史记录数<br>set history=1000<br>“禁止生成临时文件<br>set nobackup<br>set noswapfile<br>“搜索忽略大小写<br>set ignorecase<br>“搜索逐字符高亮<br>set hlsearch<br>set incsearch<br>“行内替换<br>set gdefault<br>“编码设置<br>set enc=utf-8<br>set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936<br>“语言设置<br>set langmenu=zh_CN.UTF-8<br>set helplang=cn<br>“ 我的状态行显示的内容（包括文件类型和解码）<br>set statusline=%F%m%r%h%w\ [FORMAT=%{&amp;ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(&quot;%d/%m/%y\ -\ %H:%M&quot;)}<br>set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]<br>“ 总是显示状态行<br>set laststatus=2<br>“ 命令行（在状态行下）的高度，默认为1，这里是2<br>set cmdheight=2<br>“ 侦测文件类型<br>filetype on<br>“ 载入文件类型插件<br>filetype plugin on<br>“ 为特定文件类型载入相关缩进文件<br>filetype indent on<br>“ 保存全局变量<br>set viminfo+=!<br>“ 带有如下符号的单词不要被换行分割<br>set iskeyword+=_,$,@,%,#,-<br>“ 字符间插入的像素行数目<br>set linespace=0<br>“ 增强模式中的命令行自动完成操作<br>set wildmenu<br>“ 使回格键（backspace）正常处理indent, eol, start等<br>set backspace=2<br>“ 允许backspace和光标键跨越行边界<br>set whichwrap+=&lt;,&gt;,h,l<br>“ 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）<br>set mouse=a<br>set selection=exclusive<br>set selectmode=mouse,key<br>“ 通过使用: commands命令，告诉我们文件的哪一行被改变过<br>set report=0<br>“ 在被分割的窗口间显示空白，便于阅读<br>set fillchars=vert:\ ,stl:\ ,stlnc:<br>“ 高亮显示匹配的括号<br>set showmatch<br>“ 匹配括号高亮的时间（单位是十分之一秒）<br>set matchtime=1<br>“ 光标移动到buffer的顶部和底部时保持3行距离<br>set scrolloff=3<br>“ 为C程序提供自动缩进<br>set smartindent<br>“ 高亮显示普通txt文件（需要txt.vim脚本）<br> au BufRead,BufNewFile *  setfiletype txt<br>“自动补全<br>:inoremap ( ()<esc>i<br>:inoremap ) <c-r>=ClosePair(‘)’)<cr><br>“:inoremap { {<cr>}<esc>O<br>“:inoremap } <c-r>=ClosePair(‘}’)<cr><br>:inoremap [ []<esc>i<br>:inoremap ] <c-r>=ClosePair(‘]’)<cr><br>:inoremap “ “”<esc>i<br>:inoremap ‘ ‘’<esc>i<br>function! ClosePair(char)<br>    if getline(‘.’)[col(‘.’) - 1] == a:char<br>        return “&lt;Right&gt;”<br>    else<br>        return a:char<br>    endif<br>endfunction<br>filetype plugin indent on<br>“打开文件类型检测, 加了这句才可以用智能补全<br>set completeopt=longest,menu</esc></esc></cr></c-r></esc></cr></c-r></esc></cr></cr></c-r></esc></cr></cr></space></leader></buffer></p>
+
+    </div>
+
+    
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="mapicccy Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/uncategorized/ssd%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" rel="next" title="ssd核心技术">
+                  <i class="fa fa-chevron-left"></i> ssd核心技术
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzY3Ny8yNDE3NQ=="></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#辛苦整理，转载请注明原文地址"><span class="nav-number">1.</span> <span class="nav-text">辛苦整理，转载请注明原文地址</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="mapicccy"
+    src="/images/touxiang.jpg">
+  <p class="site-author-name" itemprop="name">mapicccy</p>
+  <div class="site-description" itemprop="description">男人有实力，才有魅力</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mapicccy" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;mapicccy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mapicccy@gmail.com" title="E-Mail &amp;rarr; mapicccy@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mapicccy</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">9k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">8 mins.</span>
+</div>
+
+<div class="running-time">
+  <span>本站已运行<span id="showDays"></span></span>
+  <script>
+    var seconds = 1000;
+    var minutes = seconds * 60;
+    var hours = minutes * 60;
+    var days = hours * 24;
+    var years = days * 365;
+    var birthDay = Date.UTC(2019,11,23,23,33,14); // 这里设置建站时间
+    setInterval(function() {
+      var today = new Date();
+      var todayYear = today.getFullYear();
+      var todayMonth = today.getMonth()+1;
+      var todayDate = today.getDate();
+      var todayHour = today.getHours();
+      var todayMinute = today.getMinutes();
+      var todaySecond = today.getSeconds();
+      var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+      var diff = now - birthDay;
+      var diffYears = Math.floor(diff/years);
+      var diffDays = Math.floor((diff/days)-diffYears*365);
+      var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+      var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+      var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        document.getElementById('showDays').innerHTML=""+diffYears+"年"+diffDays+"天"+diffHours+"小时"+diffMinutes+"分钟"+diffSeconds+"秒";
+    }, 1000);
+  </script>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":true}});</script></body>
+</html>

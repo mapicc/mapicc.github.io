@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ssd核心技术</title>
+    <url>/uncategorized/ssd%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h2 id="闪存转换层Flash-Translation-Layer-FTL"><a href="#闪存转换层Flash-Translation-Layer-FTL" class="headerlink" title="闪存转换层Flash Translation Layer (FTL)"></a>闪存转换层Flash Translation Layer (FTL)</h2><p>传统块设备最小的读写单位是扇区，一般扇区大小为512byte，文件系统寻址的单位是块（size大于块），而ssd是闪存阵列，并不存在扇区，为了支持现有文件系统基于块的访问，ssd必须通过闪存转换层FTL来完成地址映射。</p><p>FTL映射方式有三种：</p><a id="more"></a>
+
+<ol>
+<li>块映射。闪存读写的最小单位是页，一个块可能有很多个页组成，采用块映射大文件读写性能很好，但每次读写小文件时依旧是读写一整个块，性能就会非常低。</li>
+<li>页映射。页的数量远大于块的数量，采用页映射就需要更多的空间存储映射表（MAP TABLE）。例如，256GB的SSD存储空间，假设页大小为4KB，地址位数为32bit，则页的数量为256GB/4KB=64M，映射表的存储空间为64M×4B=256MB。一般来说，采用页映射方式，映射表的大小是存储空间大小的千分之一。</li>
+<li>混合映射。</li>
+</ol>
+<p>闪存的物理特性：</p>
+<ol>
+<li>闪存不能update-in-place，也即，闪存不能即时更新，如果更新数据，必须先擦除原有数据，这和传统的HDD有很大不同。闪存按页为单位写入，以块为单位擦除。</li>
+<li>闪存有擦除寿命，SLC擦除寿命有几十万次，而TLC擦除寿命只有数百次。我的台式机选择的是Intel 760p，就是TLC架构的，容量256GB。假设TLC擦除寿命为500次，在有磨损均衡的情况下可以最大写入（理论值），256GB×500=128000GB，如果每天写入10GB（很多时候每天的写入量远远低于10GB），则该SSD的理论寿命有128000GB/（10GB/天）=12800天=35年。</li>
+<li>闪存天生是有坏块的，随着SSD的使用，还会不断的产生坏块。</li>
+</ol>
+<h2 id="垃圾回收Garbage-collection-GC"><a href="#垃圾回收Garbage-collection-GC" class="headerlink" title="垃圾回收Garbage collection (GC)"></a>垃圾回收Garbage collection (GC)</h2><ul>
+<li><p>由于闪存在写入数据时必须擦除原有数据，这在SSD为空盘的情况下没有问题，直接往SSD写入数据即可。如果SSD没有空闲块，所有的块都有数据（有效数据或者无效数据），再往SSD写入数据必须擦除原有数据。无效数据可以直接擦除，有效数据重新写入。</p>
+</li>
+<li><p>在顺序写的情况下，无效数据相对集中，由于垃圾回收而导致的额外写入数据最少。顺序写可遇不可求，不过垃圾回收为防止造成写放大过大一般都是擦除有效数据最少的闪存块。</p>
+</li>
+</ul>
+<p>以上强调了垃圾回收需要做到的两点，1. 找到有效数据最少的闪存块； 2. 从有效数据最少的闪存块找到有效数据所在的页。针对如何找到有效数据最少的闪存块，可以通过对所有闪存块设置一个有效数据标志计数。在每次写入一页数据时，该页原先映射的物理闪存块PBA有效数据标志减一，现在重新建立映射的物理闪存块PBA有效数据标志加一。而针对如何从有效数据最少的闪存块找到有效数据所在的页，可以对所有闪存块设置一个有效数据的bitmap。</p>
+<p>什么时候做GC呢？有两种时机，一种是在host写入数据时，如果发现空闲块小于一定阈值，这种方式称之为前台垃圾回收；另一种是在没有写入请求时，由后台垃圾回收线程自动进行垃圾回收任务。昨天在venice的会议提到的balance_gc是前台垃圾回收，gc_thread_fn、gc_timer是后台垃圾回收。</p>
+<h2 id="磨损均衡Wear-leveling"><a href="#磨损均衡Wear-leveling" class="headerlink" title="磨损均衡Wear leveling"></a>磨损均衡Wear leveling</h2><p>闪存有擦除寿命，如果对特定闪存块频繁擦写，会导致该闪存块在很短的时间就会失去电子特性而成为坏块。为了防止不断有闪存块成为坏块而导致SSD容量在额定使用寿命时间内急剧下降，FTL须提供磨损均衡算法。</p>
+<p>磨损均衡算法同样分为两种方式，一种是静态磨损均衡，一种是动态磨损均衡。用户数据分为冷数据和热数据，冷数据是不会改变的数据或者很少改变的数据，热数据是需要经常改变的数据。静态磨损均衡是指把冷数据放在擦除次数较多的闪存块上，而热数据放在擦除次数较少的闪存块上。而动态磨损均衡是每次用户将数据写入擦除次数较      少的闪存块上。</p>
+<h2 id="写放大Write-amplification"><a href="#写放大Write-amplification" class="headerlink" title="写放大Write amplification"></a>写放大Write amplification</h2><p>写放大是指host写入数据时，必须额外写入一些其他数据。在SSD为空盘时，如果是host顺序写，则直到满盘都不会写入额外数据。当没有空闲闪存块需要GC时，GC会擦除闪存块并把有效数据重新写回，此时的写放大计算：<br>$$<br>写放大=（GC重写有效数据+host写入数据）/ host写入数据<br>$$<br>写放大过大也即host写入数据时需要额外写入的数据过大，会导致闪存擦写次数上升，最终导致SSD寿命下降。写放大是SSD盘的一个重要指标。防止写放大过大，可以：</p>
+<ol>
+<li>增加预留闪存块，预留闪存块越多，则每个用户闪存块上的有效数据越少，在GC时需要写入的额外数据就越少，写放大越小。当然，预留闪存块也不能过大，这样分给host可写的闪存块就会太少；</li>
+<li>GC策略，选择有效数据少的闪存块擦除</li>
+<li>磨损均衡策略，同GC策略一样，都会搬移用户数据</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>ssd</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hello world</title>
     <url>/uncategorized/hello-world/</url>
     <content><![CDATA[<p>Hello World!</p>]]></content>

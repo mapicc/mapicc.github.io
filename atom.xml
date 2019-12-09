@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-03T06:50:35.393Z</updated>
+  <updated>2019-12-09T08:51:21.778Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>venice rc分支延时测试</title>
+    <link href="http://yoursite.com/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yoursite.com/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/</id>
+    <published>2019-12-09T06:13:56.000Z</published>
+    <updated>2019-12-09T08:51:21.778Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="venice-rc分支延时测试"><a href="#venice-rc分支延时测试" class="headerlink" title="venice rc分支延时测试"></a>venice rc分支延时测试</h1><p>针对<code>venice</code>驱动从<code>venice_make_request</code>开始的读写流程分10段进行<code>latency</code>测试，测试结果通过二维数组的形式记录在<code>struct venice</code>中，二维数组的第0维代表读写（0号索引为读流程，1号索引为写流程），第1维代表分段延时，如下所示：</p><p><code>struct venice {</code><br><code>#ifdef CONFIG_VENICE_DEBUG_STEP_LAT</code><br>    <code>int sbio_watch_count[2][RECORD_LAT_STEP];</code><br>    <code>long sbio_sum_lat[2][RECORD_LAT_STEP];</code><br>    <code>long sbio_max_lat[2][RECORD_LAT_STEP];</code><br>    <code>int req_watch_count[2][RECORD_LAT_STEP];</code><br>    <code>long req_sum_lat[2][RECORD_LAT_STEP];</code><br>    <code>long req_max_lat[2][RECORD_LAT_STEP];</code><br><code>#endif</code><br>    <code>struct nvm_target *tgt; /* target dev */</code></p><a id="more"></a><p> <code>struct nvm_dev *bdev; /* back dev */</code></p><p>​    <code>...</code></p><p><code>}</code></p><p>十段延迟分别为（以写流程为例）：</p><ol><li>从刚进入<code>venice_make_request</code>到<code>venice_convert_io</code>结束：刚进入<code>venice_make_request</code>时，调用<code>venice_getnstimeofday</code>获取纳秒计数的时间，在<code>venice_convert_io</code>之后调用<code>venice_sbio_checkpoint</code>做第0次统计；</li><li>从<code>venice_convert_io</code>结束到刚进入<code>venice_submit_bio</code>：这段<code>latency</code>应该非常小；</li><li>从刚进入<code>venice_submit_bio</code>到分配<code>request</code>之前；</li><li>从分配<code>request</code>到<code>venice_queue_work</code>工作队列处理线程<code>lnvm</code>执行<code>venice_task</code>：调用链为，<code>venice_task</code>-&gt;<code>venice_send_write_cmd</code>-&gt;<code>nvme_nvm_submit_bio</code>，在<code>nvme_submit_async_cmd</code>之前；</li><li>从<code>nvme_submit_async_cmd</code>到所有<code>request</code>处理完成，<code>balance_gc</code>之前；</li><li>从<code>nvme_submit_async_cmd</code>到刚进入<code>submit_io_completion_fn</code>：<code>submit_io_completion_fn</code>为IO流程的回调函数，由<code>lnvm</code>内核线程调用<code>nvme_kthread</code>-&gt;<code>nvme_process_cq</code>-&gt;循环调用回调<code>fn</code>；</li><li>从刚进入<code>submit_io_completion_fn</code>到<code>sbio_release</code>：<code>submit_io_completion_fn</code>通过<code>cmdinfo</code>的回调函数<code>venice_cmdinfo_callback</code>-&gt;<code>__venice_cmdinfo_callback</code>-&gt;<code>sbio_release</code>；</li><li>从<code>sbio_release</code>到<code>venice_end_io_acct</code>结束：调用流程，<code>fs_bio_write_callback</code>（sbio的callback)-&gt;<code>venice_complete_fs_io</code>-&gt;<code>venice_end_io_acct</code>；</li><li>从<code>venice_end_io_acct</code>到<code>venice_bio_endio</code>结束；</li><li>从<code>venice_bio_endio</code>结束到<code>venice_complete_fs_io</code>结束：延时几乎为0。</li></ol><p><strong>注意： 1. 由于<code>nvme</code>并没有venice结构，所以latency数据无法记录，采用在request结构中增加两个timespec结构作为临时记录； 2. 由于读写流程为异步操作，所以上文的第5\6步所有request处理完成之后IO流程并没有结束</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;venice-rc分支延时测试&quot;&gt;&lt;a href=&quot;#venice-rc分支延时测试&quot; class=&quot;headerlink&quot; title=&quot;venice rc分支延时测试&quot;&gt;&lt;/a&gt;venice rc分支延时测试&lt;/h1&gt;&lt;p&gt;针对&lt;code&gt;venice&lt;/code&gt;驱动从&lt;code&gt;venice_make_request&lt;/code&gt;开始的读写流程分10段进行&lt;code&gt;latency&lt;/code&gt;测试，测试结果通过二维数组的形式记录在&lt;code&gt;struct venice&lt;/code&gt;中，二维数组的第0维代表读写（0号索引为读流程，1号索引为写流程），第1维代表分段延时，如下所示：&lt;/p&gt;&lt;p&gt;&lt;code&gt;struct venice {&lt;/code&gt;&lt;br&gt;&lt;code&gt;#ifdef CONFIG_VENICE_DEBUG_STEP_LAT&lt;/code&gt;&lt;br&gt;    &lt;code&gt;int sbio_watch_count[2][RECORD_LAT_STEP];&lt;/code&gt;&lt;br&gt;    &lt;code&gt;long sbio_sum_lat[2][RECORD_LAT_STEP];&lt;/code&gt;&lt;br&gt;    &lt;code&gt;long sbio_max_lat[2][RECORD_LAT_STEP];&lt;/code&gt;&lt;br&gt;    &lt;code&gt;int req_watch_count[2][RECORD_LAT_STEP];&lt;/code&gt;&lt;br&gt;    &lt;code&gt;long req_sum_lat[2][RECORD_LAT_STEP];&lt;/code&gt;&lt;br&gt;    &lt;code&gt;long req_max_lat[2][RECORD_LAT_STEP];&lt;/code&gt;&lt;br&gt;&lt;code&gt;#endif&lt;/code&gt;&lt;br&gt;    &lt;code&gt;struct nvm_target *tgt; /* target dev */&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux scatterlist详解</title>
+    <link href="http://yoursite.com/uncategorized/linux-scatterlist%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://yoursite.com/uncategorized/linux-scatterlist%E8%AF%A6%E8%A7%A3/</id>
+    <published>2019-12-04T06:02:50.000Z</published>
+    <updated>2019-12-04T06:02:50.503Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>vim实用配置文件</title>

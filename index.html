@@ -190,6 +190,159 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="mapicccy">
+      <meta itemprop="description" content="男人有实力，才有魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mapicccy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">venice rc分支延时测试</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-09 06:13:56 / Modified: 08:51:21" itemprop="dateCreated datePublished" datetime="2019-12-09T06:13:56+00:00">2019-12-09</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="venice-rc分支延时测试"><a href="#venice-rc分支延时测试" class="headerlink" title="venice rc分支延时测试"></a>venice rc分支延时测试</h1><p>针对<code>venice</code>驱动从<code>venice_make_request</code>开始的读写流程分10段进行<code>latency</code>测试，测试结果通过二维数组的形式记录在<code>struct venice</code>中，二维数组的第0维代表读写（0号索引为读流程，1号索引为写流程），第1维代表分段延时，如下所示：</p><p><code>struct venice {</code><br><code>#ifdef CONFIG_VENICE_DEBUG_STEP_LAT</code><br>    <code>int sbio_watch_count[2][RECORD_LAT_STEP];</code><br>    <code>long sbio_sum_lat[2][RECORD_LAT_STEP];</code><br>    <code>long sbio_max_lat[2][RECORD_LAT_STEP];</code><br>    <code>int req_watch_count[2][RECORD_LAT_STEP];</code><br>    <code>long req_sum_lat[2][RECORD_LAT_STEP];</code><br>    <code>long req_max_lat[2][RECORD_LAT_STEP];</code><br><code>#endif</code><br>    <code>struct nvm_target *tgt; /* target dev */</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/linux-scatterlist%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="mapicccy">
+      <meta itemprop="description" content="男人有实力，才有魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mapicccy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/uncategorized/linux-scatterlist%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">linux scatterlist详解</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-04 06:02:50" itemprop="dateCreated datePublished" datetime="2019-12-04T06:02:50+00:00">2019-12-04</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -565,7 +718,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -615,13 +768,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">9k</span>
+    <span title="Symbols count total">11k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">8 mins.</span>
+    <span title="Reading time total">10 mins.</span>
 </div>
 
 <div class="running-time">

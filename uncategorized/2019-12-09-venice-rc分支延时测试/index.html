@@ -50,16 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="男人有实力，才有魅力">
-<meta property="og:type" content="website">
-<meta property="og:title" content="mapicccy">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;12&#x2F;index.html">
+  <meta name="description" content="venice rc分支延时测试针对venice驱动从venice_make_request开始的读写流程分10段进行latency测试，测试结果通过二维数组的形式记录在struct venice中，二维数组的第0维代表读写（0号索引为读流程，1号索引为写流程），第1维代表分段延时，如下所示：struct venice {#ifdef CONFIG_VENICE_DEBUG_STEP_LAT">
+<meta name="keywords" content="ssd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="venice rc分支延时测试">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;uncategorized&#x2F;2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95&#x2F;index.html">
 <meta property="og:site_name" content="mapicccy">
-<meta property="og:description" content="男人有实力，才有魅力">
+<meta property="og:description" content="venice rc分支延时测试针对venice驱动从venice_make_request开始的读写流程分10段进行latency测试，测试结果通过二维数组的形式记录在struct venice中，二维数组的第0维代表读写（0号索引为读流程，1号索引为写流程），第1维代表分段延时，如下所示：struct venice {#ifdef CONFIG_VENICE_DEBUG_STEP_LAT">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-09T08:51:21.778Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/archives/2019/12/">
+<link rel="canonical" href="http://yoursite.com/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/">
 
 
 <script id="page-configurations">
@@ -67,13 +69,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>Archive | mapicccy</title>
+  <title>venice rc分支延时测试 | mapicccy</title>
   
 
 
@@ -185,93 +187,149 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 6 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="mapicccy">
+      <meta itemprop="description" content="男人有实力，才有魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mapicccy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          venice rc分支延时测试
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-09 06:13:56 / Modified: 08:51:21" itemprop="dateCreated datePublished" datetime="2019-12-09T06:13:56+00:00">2019-12-09</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
+        <h1 id="venice-rc分支延时测试"><a href="#venice-rc分支延时测试" class="headerlink" title="venice rc分支延时测试"></a>venice rc分支延时测试</h1><p>针对<code>venice</code>驱动从<code>venice_make_request</code>开始的读写流程分10段进行<code>latency</code>测试，测试结果通过二维数组的形式记录在<code>struct venice</code>中，二维数组的第0维代表读写（0号索引为读流程，1号索引为写流程），第1维代表分段延时，如下所示：</p><p><code>struct venice {</code><br><code>#ifdef CONFIG_VENICE_DEBUG_STEP_LAT</code><br>    <code>int sbio_watch_count[2][RECORD_LAT_STEP];</code><br>    <code>long sbio_sum_lat[2][RECORD_LAT_STEP];</code><br>    <code>long sbio_max_lat[2][RECORD_LAT_STEP];</code><br>    <code>int req_watch_count[2][RECORD_LAT_STEP];</code><br>    <code>long req_sum_lat[2][RECORD_LAT_STEP];</code><br>    <code>long req_max_lat[2][RECORD_LAT_STEP];</code><br><code>#endif</code><br>    <code>struct nvm_target *tgt; /* target dev */</code></p><a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-09T06:13:56+00:00"
-              content="2019-12-09">
-          12-09
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/uncategorized/2019-12-09-venice-rc%E5%88%86%E6%94%AF%E5%BB%B6%E6%97%B6%E6%B5%8B%E8%AF%95/" itemprop="url">
-            <span itemprop="name">venice rc分支延时测试</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-04T06:02:50+00:00"
-              content="2019-12-04">
-          12-04
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/uncategorized/linux-scatterlist%E8%AF%A6%E8%A7%A3/" itemprop="url">
-            <span itemprop="name">linux scatterlist详解</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-03T06:47:39+00:00"
-              content="2019-12-03">
-          12-03
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/uncategorized/vim%E5%AE%9E%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" itemprop="url">
-            <span itemprop="name">vim实用配置文件</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+<p> <code>struct nvm_dev *bdev; /* back dev */</code></p>
+<p>​    <code>...</code></p>
+<p><code>}</code></p>
+<p>十段延迟分别为（以写流程为例）：</p>
+<ol>
+<li>从刚进入<code>venice_make_request</code>到<code>venice_convert_io</code>结束：刚进入<code>venice_make_request</code>时，调用<code>venice_getnstimeofday</code>获取纳秒计数的时间，在<code>venice_convert_io</code>之后调用<code>venice_sbio_checkpoint</code>做第0次统计；</li>
+<li>从<code>venice_convert_io</code>结束到刚进入<code>venice_submit_bio</code>：这段<code>latency</code>应该非常小；</li>
+<li>从刚进入<code>venice_submit_bio</code>到分配<code>request</code>之前；</li>
+<li>从分配<code>request</code>到<code>venice_queue_work</code>工作队列处理线程<code>lnvm</code>执行<code>venice_task</code>：调用链为，<code>venice_task</code>-&gt;<code>venice_send_write_cmd</code>-&gt;<code>nvme_nvm_submit_bio</code>，在<code>nvme_submit_async_cmd</code>之前；</li>
+<li>从<code>nvme_submit_async_cmd</code>到所有<code>request</code>处理完成，<code>balance_gc</code>之前；</li>
+<li>从<code>nvme_submit_async_cmd</code>到刚进入<code>submit_io_completion_fn</code>：<code>submit_io_completion_fn</code>为IO流程的回调函数，由<code>lnvm</code>内核线程调用<code>nvme_kthread</code>-&gt;<code>nvme_process_cq</code>-&gt;循环调用回调<code>fn</code>；</li>
+<li>从刚进入<code>submit_io_completion_fn</code>到<code>sbio_release</code>：<code>submit_io_completion_fn</code>通过<code>cmdinfo</code>的回调函数<code>venice_cmdinfo_callback</code>-&gt;<code>__venice_cmdinfo_callback</code>-&gt;<code>sbio_release</code>；</li>
+<li>从<code>sbio_release</code>到<code>venice_end_io_acct</code>结束：调用流程，<code>fs_bio_write_callback</code>（sbio的callback)-&gt;<code>venice_complete_fs_io</code>-&gt;<code>venice_end_io_acct</code>；</li>
+<li>从<code>venice_end_io_acct</code>到<code>venice_bio_endio</code>结束；</li>
+<li>从<code>venice_bio_endio</code>结束到<code>venice_complete_fs_io</code>结束：延时几乎为0。</li>
+</ol>
+<p><strong>注意： 1. 由于<code>nvme</code>并没有venice结构，所以latency数据无法记录，采用在request结构中增加两个timespec结构作为临时记录； 2. 由于读写流程为异步操作，所以上文的第5\6步所有request处理完成之后IO流程并没有结束</strong></p>
 
     </div>
+
+    
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="mapicccy Alipay">
+        <p>Alipay</p>
+      </div>
+
   </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ssd/" rel="tag"># ssd</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/uncategorized/linux-scatterlist%E8%AF%A6%E8%A7%A3/" rel="next" title="linux scatterlist详解">
+                  <i class="fa fa-chevron-left"></i> linux scatterlist详解
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
   
   
   
 
-  
-
+  </div>
 
 
           </div>
           
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzY3Ny8yNDE3NQ=="></div>
+  </div>
+  
 
         </div>
           
@@ -296,6 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#venice-rc分支延时测试"><span class="nav-number">1.</span> <span class="nav-text">venice rc分支延时测试</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,6 +527,19 @@
 
   
 
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":true}});</script></body>
 </html>
